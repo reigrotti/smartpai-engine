@@ -35,3 +35,7 @@
 - **Transactions:** Criada tela de auditoria com filtros e lista real.
 - **Performance:** Criada tela de KPIs comparativos com gráficos de barra verticais.
 - **Navegação:** Sidebar integrada com Next/Link para transição sem refresh.
+
+## 🧪 Ambiente de Testes
+- **Adquirentes:** Utilizando endpoints de Sandbox (Cielo e Rede).
+- **Fallback:** Simulação de erro em Sandbox ativa para testes de redundância.

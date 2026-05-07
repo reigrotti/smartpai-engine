@@ -16,14 +16,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <nav className="flex flex-col gap-3">
               <div className="text-[10px] font-black text-slate-600 uppercase tracking-[0.3em] px-3 mb-2">Systems</div>
-              <Link href="/" className="flex items-center gap-4 px-4 py-3 hover:bg-slate-900/50 text-slate-400 hover:text-blue-400 rounded-2xl font-bold text-xs transition-all border border-transparent hover:border-blue-500/10">
+              <Link href="/" className="flex items-center gap-4 px-4 py-3 hover:bg-slate-900/50 text-slate-400 hover:text-blue-400 rounded-2xl font-bold text-xs transition-all border border-transparent hover:border-slate-800/50">
                 📊 Analytics
               </Link>
-              <Link href="/transactions" className="flex items-center gap-4 px-4 py-3 hover:bg-slate-900/50 text-slate-400 hover:text-blue-400 rounded-2xl font-bold text-xs transition-all border border-transparent hover:border-blue-500/10">
+              <Link href="/transactions" className="flex items-center gap-4 px-4 py-3 hover:bg-slate-900/50 text-slate-400 hover:text-blue-400 rounded-2xl font-bold text-xs transition-all border border-transparent hover:border-slate-800/50">
                 ⇄ Transações
               </Link>
-              <Link href="/performance" className="flex items-center gap-4 px-4 py-3 hover:bg-slate-900/50 text-slate-400 hover:text-blue-400 rounded-2xl font-bold text-xs transition-all border border-transparent hover:border-blue-500/10">
+              <Link href="/performance" className="flex items-center gap-4 px-4 py-3 hover:bg-slate-900/50 text-slate-400 hover:text-blue-400 rounded-2xl font-bold text-xs transition-all border border-transparent hover:border-slate-800/50">
                 📈 Performance
+              </Link>
+              <Link href="/checkout" className="flex items-center gap-4 px-4 py-3 bg-blue-600/10 text-blue-400 rounded-2xl font-bold text-xs transition-all border border-blue-500/20 hover:bg-blue-600/20">
+                🛒 Checkout Seguro
               </Link>
             </nav>
           </aside>
@@ -31,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {children}
           </main>
         </div>
+        <script src="https://js.verygoodvault.com/vgs-collect/2.18.0/vgs-collect.js"></script>
       </body>
     </html>
   )

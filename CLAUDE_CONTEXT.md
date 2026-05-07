@@ -1,41 +1,80 @@
 # SmartPai Engine — Contexto de Handover
+Atualizado: 2026-05-07
 
-## Estado Atual: ESTABILIZADO ✅
-- **Data:** 07/05/2026
-- **Status:** Conexão Local -> Cloud SQL via Proxy funcionando 100%.
-- **Autenticação:** Rota `/api/pay` validando Merchant via `secretKey` com sucesso.
+## Projeto
+Orquestrador financeiro multi-adquirente (Rede/Cielo) com contingência automática.
+Repositório: https://github.com/reigrotti/smartpai-engine
 
-## Infraestrutura
-- **Ambiente:** ChromeOS Penguin (Linux) - Node v22.
-- **Banco:** Google Cloud SQL (PostgreSQL 15).
-- **Prisma:** Versão 7 (Configuração via `prisma.config.ts`).
+## Stack
+Next.js 14, Node 22, Prisma 7.7.0, PostgreSQL 15, Cloud SQL (GCP), VGS, ChromeOS Penguin + VS Code
 
-## Próximos Passos
-1. Criar Dockerfile para o projeto.
-2. Configurar deploy automático no Cloud Run.
-3. Implementar a lógica real de processamento de pagamento (integração VGS/Adquirentes).
+## Infraestrutura GCP
+- Projeto: smartpai-serverless-mvp
+- Instância Cloud SQL: smartpai-serverless-mvp:southamerica-east1:smartpai-db-instance
+- IP público: 35.199.100.217
+- Banco: postgres / usuário: postgres / senha: test123
 
-## Como Rodar (Recapitulando)
-1. **Aba Proxy:** `~/cloud-sql-proxy --port 5432 smartpai-serverless-mvp:southamerica-east1:smartpai-db-instance`
-2. **Aba Server:** `npm run dev`
-3. **Teste:** Usar `Bearer test1234` no Header Authorization.
+## VGS (Very Good Security)
+- Vault ID: tntjjh2tydt (Sandbox)
+- Vault URL: tntjjh2tydt.sandbox.verygoodproxy.com
+- Rota inbound: routiq-inbound (ID: ef973212-4d3b-4fbb-8bab-1878d4d9647b)
+- Upstream: https://onset-crushable-handprint.ngrok-free.dev
+- Operações: Redact $.card_number e $.card_cvc no body
+- Intercept CORS: ATIVADO
+- Status: FUNCIONANDO ✅
 
-## Sprint 2 — Concluída ✅
-- **Funcionalidade:** Motor de Orquestração e Failover.
-- **Estrutura:** Implementada Interface `IProvider` e Provedores `Cielo` e `Rede`.
-- **Resultado:** O sistema agora tenta múltiplos provedores automaticamente em caso de falha.
-- **Mocks:** Cielo configurada para falhar em valores de R$ 500 para testes de contingência.
+## Ambiente de desenvolvimento
+- Máquina: ChromeOS Linux (penguin)
+- Editor: VS Code com extensões (ESLint, Prettier, Prisma, Tailwind)
+- Pasta: ~/smartpai-engine
+- Node v22, gcloud SDK, git instalados
+- Chave SSH configurada no GitHub
+- Ctrl+V configurado no terminal do VS Code
 
-## Sprint 2 — BI & Portal Finalizado ✅
-- **Visual:** Portal Analytics com Sidebar, Recharts (Area/Bar) e Dark Mode completo.
-- **Backend:** Endpoint de dashboard otimizado com queryRaw para série temporal.
-- **Ambiente:** Penguin Crostini estabilizado com Tailwind 3.4 e Prisma Engine local.
+## Como subir o ambiente (3 abas no terminal do VS Code)
+Aba 1 — Proxy Cloud SQL:
+~/cloud-sql-proxy --port 5432 smartpai-serverless-mvp:southamerica-east1:smartpai-db-instance
 
-## Sprint 3 — Rotas e Sub-páginas ✅
-- **Transactions:** Criada tela de auditoria com filtros e lista real.
-- **Performance:** Criada tela de KPIs comparativos com gráficos de barra verticais.
-- **Navegação:** Sidebar integrada com Next/Link para transição sem refresh.
+Aba 2 — Servidor:
+cd ~/smartpai-engine && npm run dev
 
-## 🧪 Ambiente de Testes
-- **Adquirentes:** Utilizando endpoints de Sandbox (Cielo e Rede).
-- **Fallback:** Simulação de erro em Sandbox ativa para testes de redundância.
+Aba 3 — Ngrok:
+ngrok http 3000 --domain=onset-crushable-handprint.ngrok-free.dev
+
+## Dados de teste no banco
+- id: test-merchant-001
+- name: RoutIQ MVP
+- publicKey: pub_test
+- secretKey: test1234
+
+## Status das Sprints
+✅ Sprint 1: Infraestrutura (Cloud SQL, Prisma, API /pay autenticando)
+✅ Sprint 2: VGS Collect integrado, checkout PCI compliant funcionando
+✅ Sprint 2b: Portal Analytics com Recharts, dark mode, sidebar, failover Cielo→Rede
+✅ Sprint 3: Telas Transactions e Performance, navegação com Next/Link
+⏳ Próximo: Webhooks PIX + Deploy Cloud Run
+
+## Próximos passos
+1. Webhook PIX em app/api/webhooks/pix/route.ts
+2. Deploy Cloud Run:
+   gcloud run deploy smartpai \
+     --source . \
+     --region southamerica-east1 \
+     --add-cloudsql-instances smartpai-serverless-mvp:southamerica-east1:smartpai-db-instance \
+     --set-env-vars DATABASE_URL="..." \
+     --allow-unauthenticated
+
+## Workflow de desenvolvimento
+- Editar código: VS Code (nunca nano ou heredoc)
+- Terminal: integrado no VS Code (Ctrl+`)
+- Git: terminal ou painel Source Control
+
+## Problemas resolvidos
+- P1000 intermitente: pool de conexões zumbi no Cloud Shell
+- Cloud Shell substituído pelo ChromeOS penguin + VS Code
+- Dois projetos sobrepostos na mesma pasta
+- Prisma 7: URL deve ficar em prisma.config.ts, não no schema.prisma
+- VGS CORS: Intercept CORS ativado em Vault Settings → Advanced
+- VGS tokenize() substituído por submit()
+- EOF corrompeu checkout/page.tsx: corrigido via nano
+- prisma.config.ts e .env.local adicionados ao .gitignore

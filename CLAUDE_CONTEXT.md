@@ -85,3 +85,24 @@ ngrok http 3000 --domain=onset-crushable-handprint.ngrok-free.dev
 - VS Code abre com: code ~/smartpai-engine
 - Ctrl+V funciona no terminal do VS Code (configurado manualmente)
 - Todo código deve ser editado no VS Code, nunca no terminal
+## 🚀 STATUS: MVP EM PRODUÇÃO
+- **Cloud Run URL:** https://smartpai-engine-728639463419.southamerica-east1.run.app
+- **Checkout:** https://smartpai-engine-728639463419.southamerica-east1.run.app/checkout
+- **Deploy:** Cloud Run (southamerica-east1) com Cloud SQL via Unix Socket
+- **Data:** 2026-05-07
+- **Senha DB correta:** test123 (não test1234 — erro histórico do Gemini)
+
+## ✅ O que está funcionando em produção
+- Checkout PCI compliant via VGS Collect
+- Tokenização de cartão (Vault: tntjjh2tydt)
+- Autenticação por merchant via Bearer token
+- Processamento via Cielo com fallback para Rede
+- Cloud SQL via Unix socket (sem proxy)
+- Portal Analytics, Transações e Performance
+- VGS rota inbound apontando para Cloud Run (não mais ngrok)
+
+## ⚠️ Atenção para próximas sessões
+- A senha do banco é **test123** — o Gemini às vezes usa test1234 (errado)
+- O ambiente local (penguin) ainda usa proxy para dev
+- Nunca editar código via nano ou heredoc — usar VS Code
+- prisma.config.ts tem a senha e NÃO vai para o GitHub

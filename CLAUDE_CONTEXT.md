@@ -19,3 +19,9 @@
 1. **Aba Proxy:** `~/cloud-sql-proxy --port 5432 smartpai-serverless-mvp:southamerica-east1:smartpai-db-instance`
 2. **Aba Server:** `npm run dev`
 3. **Teste:** Usar `Bearer test1234` no Header Authorization.
+
+## Sprint 2 — Concluída ✅
+- **Funcionalidade:** Motor de Orquestração e Failover.
+- **Estrutura:** Implementada Interface `IProvider` e Provedores `Cielo` e `Rede`.
+- **Resultado:** O sistema agora tenta múltiplos provedores automaticamente em caso de falha.
+- **Mocks:** Cielo configurada para falhar em valores de R$ 500 para testes de contingência.

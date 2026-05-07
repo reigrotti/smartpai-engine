@@ -78,3 +78,10 @@ ngrok http 3000 --domain=onset-crushable-handprint.ngrok-free.dev
 - VGS tokenize() substituído por submit()
 - EOF corrompeu checkout/page.tsx: corrigido via nano
 - prisma.config.ts e .env.local adicionados ao .gitignore
+## Mudança de ambiente (importante)
+- Antes: código editado via nano/heredoc no terminal ou editor do Cloud Shell
+- Agora: VS Code instalado no penguin como editor principal
+- Motivo: nano e heredoc causavam corrupção de arquivos (EOF, paste mode)
+- VS Code abre com: code ~/smartpai-engine
+- Ctrl+V funciona no terminal do VS Code (configurado manualmente)
+- Todo código deve ser editado no VS Code, nunca no terminal

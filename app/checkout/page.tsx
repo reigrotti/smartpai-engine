@@ -6,7 +6,6 @@ export default function CheckoutPage() {
   const vgsFormRef = useRef<any>(null);
 
   useEffect(() => {
-    // 1. Só inicializa se o script estiver pronto e se já não houver uma instância
     const initVGS = () => {
       if (typeof window !== 'undefined' && (window as any).VGSCollect && !vgsFormRef.current) {
         const form = (window as any).VGSCollect.create('tntjjh2tydt', 'sandbox', () => {});
@@ -36,7 +35,6 @@ export default function CheckoutPage() {
       }
     };
 
-    // Pequeno delay para garantir que o DOM estabilizou
     const timer = setTimeout(initVGS, 300);
     return () => clearTimeout(timer);
   }, []);
@@ -46,30 +44,25 @@ export default function CheckoutPage() {
     if (!vgsFormRef.current || loading) return;
     setLoading(true);
 
-    vgsFormRef.current.tokenize(async (status: number, response: any) => {
-      if (status === 200) {
-        try {
-          await fetch('/api/pay', {
-            method: 'POST',
-            headers: { 
-              'Content-Type': 'application/json',
-              'Authorization': 'Bearer test1234' 
-            },
-            body: JSON.stringify({
-              vgsToken: response.data.card_number,
-              amount: 100.00,
-              merchantId: 'test-merchant-001'
-            }),
-          });
-          alert('🔥 SUCESSO! Sprint 2 finalizada com perfeição.');
-        } catch (err) {
-          alert('Token gerado com sucesso, mas API local falhou.');
+    vgsFormRef.current.submit(
+      '/api/pay',
+      {
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer test1234',
+          'Content-Type': 'application/json'
+        },
+        data: { amount: 100.00, merchantId: 'test-merchant-001' }
+      },
+      (status: number, response: any) => {
+        if (status === 200) {
+          alert('🔥 SUCESSO! Pagamento processado com segurança.');
+        } else {
+          alert('Erro: ' + JSON.stringify(response));
         }
-      } else {
-        alert('VGS recusou os dados. Tente digitar pausadamente.');
+        setLoading(false);
       }
-      setLoading(false);
-    });
+    );
   };
 
   return (
@@ -83,7 +76,6 @@ export default function CheckoutPage() {
         <form onSubmit={handlePayment} className="flex flex-col gap-8">
           <div className="space-y-3">
             <label className="text-[10px] font-black text-slate-500 uppercase tracking-widest ml-1">Cartão de Crédito</label>
-            {/* Divs puras sem nenhuma lógica React dentro delas para não bugar o VGS */}
             <div id="vgs-card-container" className="h-16 w-full bg-slate-950 border border-slate-800 rounded-2xl flex items-center shadow-inner overflow-hidden"></div>
           </div>
 

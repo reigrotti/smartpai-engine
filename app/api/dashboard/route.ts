@@ -3,37 +3,40 @@ import { prisma } from '../../../lib/prisma';
 
 export async function GET() {
   try {
-    // Forçar a verificação do objeto importado
-    const db = prisma;
-
-    if (!db || !db.transaction) {
-      console.error("DEBUG: Prisma Client não está disponível no runtime.");
-      return NextResponse.json({ error: "Banco de dados indisponível no momento" }, { status: 500 });
-    }
-
-    const stats = await db.transaction.groupBy({
+    // 1. Métricas Consolidadas (Cards)
+    const stats = await prisma.transaction.groupBy({
       by: ['provider', 'status'],
       _count: { id: true },
       _sum: { amount: true }
     });
 
-    const recentTransactions = await db.transaction.findMany({
+    // 2. Dados de Série Temporal (Gráfico)
+    // Usamos queryRaw para extrair a data formatada e agrupar
+    const chartData = await prisma.$queryRaw`
+      SELECT 
+        TO_CHAR("createdAt", 'DD/MM') as date,
+        SUM(CASE WHEN status = 'approved' THEN amount ELSE 0 END) as approved,
+        SUM(CASE WHEN status = 'failed' THEN amount ELSE 0 END) as failed
+      FROM "Transaction"
+      WHERE "createdAt" > CURRENT_DATE - INTERVAL '7 days'
+      GROUP BY date
+      ORDER BY date ASC
+    `;
+
+    // 3. Feed de Transações Recentes
+    const recent = await prisma.transaction.findMany({
       take: 10,
       orderBy: { createdAt: 'desc' },
-      include: { merchant: { select: { name: true } } }
+      include: { 
+        merchant: { 
+          select: { name: true } 
+        } 
+      }
     });
 
-    return NextResponse.json({
-      title: "SmartPai Real-Time Health",
-      status: "Operational",
-      metrics: stats,
-      recent: recentTransactions
-    });
+    return NextResponse.json({ stats, chartData, recent });
   } catch (error: any) {
-    console.error("ERRO NO DASHBOARD:", error.message);
-    return NextResponse.json({ 
-      error: "Erro ao carregar dados do banco", 
-      details: error.message 
-    }, { status: 500 });
+    console.error("Dashboard API Error:", error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }

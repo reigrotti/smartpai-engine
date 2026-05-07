@@ -25,3 +25,8 @@
 - **Estrutura:** Implementada Interface `IProvider` e Provedores `Cielo` e `Rede`.
 - **Resultado:** O sistema agora tenta múltiplos provedores automaticamente em caso de falha.
 - **Mocks:** Cielo configurada para falhar em valores de R$ 500 para testes de contingência.
+
+## Sprint 2 — BI & Portal Finalizado ✅
+- **Visual:** Portal Analytics com Sidebar, Recharts (Area/Bar) e Dark Mode completo.
+- **Backend:** Endpoint de dashboard otimizado com queryRaw para série temporal.
+- **Ambiente:** Penguin Crostini estabilizado com Tailwind 3.4 e Prisma Engine local.

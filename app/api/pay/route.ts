@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '../../../lib/prisma';
+import { PaymentService } from '../../../lib/services/paymentService';
 
 export async function POST(request: Request) {
   try {
@@ -9,7 +10,9 @@ export async function POST(request: Request) {
     }
 
     const providedSecretKey = authHeader.split(' ')[1];
+    const body = await request.json();
 
+    // Busca o Merchant pela Secret Key (agora que o campo é @unique)
     const merchant = await prisma.merchant.findUnique({
       where: { secretKey: providedSecretKey }
     });
@@ -18,14 +21,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Acesso negado: Secret Key inválida.' }, { status: 401 });
     }
 
+    // Chama o serviço de pagamento
+    const result = await PaymentService.process({
+      merchantId: merchant.id,
+      amount: body.amount,
+      cardToken: body.cardToken
+    });
+
     return NextResponse.json({ 
       success: true, 
       merchant: merchant.name,
-      message: 'Autenticação bem-sucedida! Rota de pagamento liberada.' 
+      ...result
     }, { status: 200 });
 
-  } catch (error) {
+  } catch (error: any) {
     console.error('Erro na API Pay:', error);
-    return NextResponse.json({ error: 'Erro interno.' }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Erro interno.' }, { status: 500 });
   }
 }

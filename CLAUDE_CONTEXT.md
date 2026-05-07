@@ -30,3 +30,8 @@
 - **Visual:** Portal Analytics com Sidebar, Recharts (Area/Bar) e Dark Mode completo.
 - **Backend:** Endpoint de dashboard otimizado com queryRaw para série temporal.
 - **Ambiente:** Penguin Crostini estabilizado com Tailwind 3.4 e Prisma Engine local.
+
+## Sprint 3 — Rotas e Sub-páginas ✅
+- **Transactions:** Criada tela de auditoria com filtros e lista real.
+- **Performance:** Criada tela de KPIs comparativos com gráficos de barra verticais.
+- **Navegação:** Sidebar integrada com Next/Link para transição sem refresh.

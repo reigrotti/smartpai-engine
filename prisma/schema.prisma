@@ -1,6 +1,5 @@
 generator client {
   provider = "prisma-client-js"
-  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -10,8 +9,8 @@ datasource db {
 model Merchant {
   id        String   @id @default(cuid())
   name      String
-  publicKey String
-  secretKey String
+  publicKey String   @unique
+  secretKey String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

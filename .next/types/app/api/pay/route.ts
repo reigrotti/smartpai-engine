@@ -1,4 +1,4 @@
-// File: /home/reigrotti/smartpai-serverless-mvp/app/api/pay/route.ts
+// File: /home/goideiago/smartpai-engine/app/api/pay/route.ts
 import * as entry from '../../../../../app/api/pay/route.js'
 import type { NextRequest } from 'next/server.js'
 

@@ -11,15 +11,16 @@ export async function POST(request: Request) {
     const providedSecretKey = authHeader.split(' ')[1];
 
     const merchant = await prisma.merchant.findUnique({
-      where: { id: 'default-merchant' }
+      where: { secretKey: providedSecretKey }
     });
 
-    if (!merchant || merchant.secretKey !== providedSecretKey) {
+    if (!merchant) {
       return NextResponse.json({ error: 'Acesso negado: Secret Key inválida.' }, { status: 401 });
     }
 
     return NextResponse.json({ 
       success: true, 
+      merchant: merchant.name,
       message: 'Autenticação bem-sucedida! Rota de pagamento liberada.' 
     }, { status: 200 });
 

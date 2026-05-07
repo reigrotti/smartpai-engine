@@ -12,7 +12,7 @@ export async function POST(request: Request) {
     const providedSecretKey = authHeader.split(' ')[1];
     const body = await request.json();
 
-    // Busca o Merchant pela Secret Key (agora que o campo é @unique)
+    // 1. Validação do Merchant
     const merchant = await prisma.merchant.findUnique({
       where: { secretKey: providedSecretKey }
     });
@@ -21,12 +21,27 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Acesso negado: Secret Key inválida.' }, { status: 401 });
     }
 
-    // Chama o serviço de pagamento
+    // 2. Processamento do Pagamento (Cielo/Rede)
     const result = await PaymentService.process({
       merchantId: merchant.id,
       amount: body.amount,
       cardToken: body.cardToken
     });
+
+    // 3. PERSISTÊNCIA NO BANCO (O elo perdido)
+    // Aqui gravamos o externalId para que o Webhook consiga encontrar a transação depois
+    await prisma.transaction.create({
+      data: {
+        merchantId: merchant.id,
+        amount: body.amount,
+        status: result.status === 'approved' ? 'SUCCESS' : 'FAILED',
+        provider: result.provider,
+        externalId: result.transactionId, // O ID que o Webhook usará (ex: cielo_123)
+        // Adicione outros campos conforme seu schema (ex: cardLastFour se houver)
+      }
+    });
+
+    console.log(`[API Pay] Transação gravada com sucesso: ${result.transactionId}`);
 
     return NextResponse.json({ 
       success: true, 

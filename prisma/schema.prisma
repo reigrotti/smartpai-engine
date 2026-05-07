@@ -18,11 +18,13 @@ model Merchant {
 
 model Transaction {
   id         String   @id @default(cuid())
+  externalId String?  @unique
   amount     Float
-  status     String   
+  status     String
   provider   String
   error      String?
   merchantId String
   merchant   Merchant @relation(fields: [merchantId], references: [id])
   createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }

@@ -106,3 +106,25 @@ ngrok http 3000 --domain=onset-crushable-handprint.ngrok-free.dev
 - O ambiente local (penguin) ainda usa proxy para dev
 - Nunca editar código via nano ou heredoc — usar VS Code
 - prisma.config.ts tem a senha e NÃO vai para o GitHub
+# SmartPai Engine — Contexto de Handover (Pós-Sprint 3)
+Data: 2026-05-07 | Status: Produção Estabilizada ✅
+
+## 🚀 Status da Infraestrutura
+- **Cloud Run URL:** https://smartpai-engine-728639463419.southamerica-east1.run.app
+- **Conector Cloud SQL:** Unix Socket (Instância: smartpai-db-instance)
+- **Persistência:** API `/api/pay` agora persiste o `externalId` (ID do Provedor) corretamente.
+
+## ✅ Sprint 3: Entregas Realizadas
+- **Webhooks PIX:** Endpoint `/api/webhooks/pix` operacional com lógica de idempotência e busca segura via `findUnique`.
+- **Integridade de Dados:** Resolvido o bug de campos NULL no banco de dados.
+- **Ambiente de Build:** `tsconfig.json` e `package.json` sanitizados para deploy contínuo via Buildpacks.
+
+## 🛠️ Notas Técnicas para o Daniel
+1. **Webhook:** O sistema retorna `404` para IDs inexistentes e `200 (Already processed)` para duplicatas, evitando loops de processamento.
+2. **Logs:** Monitoramento via `gcloud run services logs read`.
+3. **Prisma:** Sempre rodar `prisma generate` no build (já configurado no `package.json`).
+
+## ⏳ Próximos Passos (Sprint 4)
+1. Webhooks reais para notificações de adquirentes (Cielo/Rede).
+2. Interface de gestão de Merchant no Portal.
+3. Configuração de domínios customizados.

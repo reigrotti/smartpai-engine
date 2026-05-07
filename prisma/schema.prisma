@@ -7,10 +7,22 @@ datasource db {
 }
 
 model Merchant {
-  id        String   @id @default(cuid())
-  name      String
-  publicKey String   @unique
-  secretKey String   @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           String        @id @default(cuid())
+  name         String
+  publicKey    String        @unique
+  secretKey    String        @unique
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Transaction {
+  id         String   @id @default(cuid())
+  amount     Float
+  status     String   
+  provider   String
+  error      String?
+  merchantId String
+  merchant   Merchant @relation(fields: [merchantId], references: [id])
+  createdAt  DateTime @default(now())
 }

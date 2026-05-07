@@ -1,6 +1,7 @@
 import { CieloProvider } from '../providers/cieloProvider';
 import { RedeProvider } from '../providers/redeProvider';
 import { IProvider, ProviderResponse } from '../providers/baseProvider';
+import { prisma } from '../prisma'; 
 
 export interface PaymentRequest {
   merchantId: string;
@@ -9,42 +10,47 @@ export interface PaymentRequest {
 }
 
 export class PaymentService {
-  // Definimos a ordem de prioridade dos provedores
   private static providers: IProvider[] = [
     new CieloProvider(),
     new RedeProvider()
   ];
 
   static async process(data: PaymentRequest) {
-    console.log(`[Orquestrador] Iniciando transação de R$ ${data.amount} para Merchant ${data.merchantId}`);
-    
+    console.log(`[Orquestrador] Processando R$ ${data.amount}`);
     let lastError = '';
 
-    // Loop de Resiliência: Tenta cada provedor na ordem
     for (const provider of this.providers) {
       try {
         const response: ProviderResponse = await provider.execute(data.amount, data.cardToken);
 
+        // Tentativa de gravar no banco
+        try {
+          await prisma.transaction.create({
+            data: {
+              amount: data.amount,
+              status: response.success ? 'approved' : 'failed',
+              provider: response.providerName,
+              error: response.error || null,
+              merchantId: data.merchantId
+            }
+          });
+        } catch (dbError: any) {
+          console.error("Erro ao gravar transação no banco:", dbError.message);
+          // Não travamos o fluxo se o banco der erro de log, mas avisamos no console
+        }
+
         if (response.success) {
-          console.log(`[Orquestrador] Sucesso via ${response.providerName}!`);
           return {
             status: 'approved',
             transactionId: response.transactionId,
-            provider: response.providerName,
-            processedAt: new Date().toISOString()
+            provider: response.providerName
           };
-        } else {
-          console.warn(`[Orquestrador] Falha no provedor ${provider.name}: ${response.error}`);
-          lastError = response.error || 'Erro desconhecido';
-          // Continua para o próximo provedor no loop
         }
+        lastError = response.error || 'Erro no provedor';
       } catch (err: any) {
-        console.error(`[Orquestrador] Erro crítico em ${provider.name}:`, err.message);
         lastError = err.message;
       }
     }
-
-    // Se sair do loop sem sucesso em nenhum provedor
-    throw new Error(`Todos os provedores falharam. Último erro: ${lastError}`);
+    throw new Error(`Falha total no orquestrador: ${lastError}`);
   }
 }

@@ -1,0 +1,842 @@
+commit 8b59eb1cbe3cfb2b5c3be9d9c3e657889ade3dd5
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 19:49:49 2026 -0300
+
+    feat: webhook pix operacional, correção de persistência externalId e deploy cloud run
+
+M	.next/cache/webpack/client-development/0.pack.gz
+M	.next/cache/webpack/client-development/1.pack.gz
+M	.next/cache/webpack/client-development/9.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz.old
+M	.next/static/chunks/app/layout.js
+M	.next/static/chunks/main.js
+M	.next/static/chunks/webpack.js
+M	.next/trace
+M	CLAUDE_CONTEXT.md
+M	app/api/pay/route.ts
+A	app/api/webhooks/pix/route.ts
+M	prisma/schema.prisma
+M	tsconfig.json
+
+commit 8b3ed34434b2e9d69f03aea1781ec2fbe9badc65
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 18:30:44 2026 -0300
+
+    docs: MVP em producao, handover final
+
+M	CLAUDE_CONTEXT.md
+
+commit d8fdcb28a57b348cb2cfcb9a37c778de5967bb19
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 18:27:46 2026 -0300
+
+    feat: MVP completo em producao no Cloud Run
+
+M	.next/cache/webpack/client-development-fallback/0.pack.gz
+M	.next/cache/webpack/client-development-fallback/index.pack.gz.old
+M	.next/cache/webpack/client-development/10.pack.gz
+M	.next/cache/webpack/client-development/11.pack.gz
+M	.next/cache/webpack/client-development/12.pack.gz
+M	.next/cache/webpack/client-development/2.pack.gz
+M	.next/cache/webpack/client-development/6.pack.gz
+M	.next/cache/webpack/client-development/9.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz.old
+M	.next/cache/webpack/server-development/10.pack.gz
+M	.next/cache/webpack/server-development/11.pack.gz
+M	.next/cache/webpack/server-development/12.pack.gz
+M	.next/cache/webpack/server-development/3.pack.gz
+M	.next/cache/webpack/server-development/5.pack.gz
+M	.next/cache/webpack/server-development/8.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz.old
+M	.next/server/app-paths-manifest.json
+M	.next/server/webpack-runtime.js
+M	.next/static/chunks/app/layout.js
+M	.next/static/chunks/webpack.js
+M	.next/trace
+M	package-lock.json
+M	package.json
+A	packages.microsoft.gpg
+
+commit e7c5b9a159bd6542a62b133f05bac90243e1d41c
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 17:53:45 2026 -0300
+
+    docs: handover final consolidado
+
+M	CLAUDE_CONTEXT.md
+
+commit db20c0ca39fbe5fbeac504f8c135bd975ae40217
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 17:51:17 2026 -0300
+
+    docs: handover final consolidado
+
+M	CLAUDE_CONTEXT.md
+
+commit 4f1f907e4ec1e42afff0fb3aac86b4a6f848205f
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 17:43:36 2026 -0300
+
+    chore: atualiza gitignore com prisma.config.ts e .env.local
+
+M	.gitignore
+
+commit 5f69b250cde58dff5657dd28eec639cca0fc3a13
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 17:08:15 2026 -0300
+
+    feat: VGS Collect integrado com sucesso, checkout PCI funcionando
+
+M	.next/app-build-manifest.json
+M	.next/cache/webpack/client-development/10.pack.gz
+M	.next/cache/webpack/client-development/11.pack.gz
+A	.next/cache/webpack/client-development/12.pack.gz
+M	.next/cache/webpack/client-development/4.pack.gz
+M	.next/cache/webpack/client-development/5.pack.gz
+M	.next/cache/webpack/client-development/9.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz.old
+M	.next/cache/webpack/server-development/1.pack.gz
+M	.next/cache/webpack/server-development/11.pack.gz
+M	.next/cache/webpack/server-development/2.pack.gz
+M	.next/cache/webpack/server-development/4.pack.gz
+M	.next/cache/webpack/server-development/5.pack.gz
+M	.next/cache/webpack/server-development/6.pack.gz
+M	.next/cache/webpack/server-development/8.pack.gz
+M	.next/cache/webpack/server-development/9.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz.old
+M	.next/server/app-paths-manifest.json
+M	.next/server/app/checkout/page.js
+M	.next/server/webpack-runtime.js
+M	.next/static/chunks/app/checkout/page.js
+M	.next/static/chunks/app/layout.js
+M	.next/static/chunks/webpack.js
+A	.next/static/webpack/00a4457c94004f92.webpack.hot-update.json
+A	.next/static/webpack/13785e191fb76797.webpack.hot-update.json
+A	.next/static/webpack/25b0d7d807919edd.webpack.hot-update.json
+A	.next/static/webpack/36036f791708a02b.webpack.hot-update.json
+A	.next/static/webpack/54945d6611b0d21e.webpack.hot-update.json
+A	.next/static/webpack/5e020d407fe97a56.webpack.hot-update.json
+A	.next/static/webpack/630b1db2615f44d8.webpack.hot-update.json
+A	.next/static/webpack/69d6f58f90145618.webpack.hot-update.json
+A	.next/static/webpack/710bea42242ddb77.webpack.hot-update.json
+A	.next/static/webpack/824a9650cebb7a43.webpack.hot-update.json
+A	.next/static/webpack/app/checkout/page.25b0d7d807919edd.hot-update.js
+A	.next/static/webpack/app/checkout/page.54945d6611b0d21e.hot-update.js
+A	.next/static/webpack/app/checkout/page.630b1db2615f44d8.hot-update.js
+A	.next/static/webpack/app/layout.00a4457c94004f92.hot-update.js
+A	.next/static/webpack/app/layout.13785e191fb76797.hot-update.js
+A	.next/static/webpack/app/layout.25b0d7d807919edd.hot-update.js
+A	.next/static/webpack/app/layout.36036f791708a02b.hot-update.js
+A	.next/static/webpack/app/layout.54945d6611b0d21e.hot-update.js
+A	.next/static/webpack/app/layout.5e020d407fe97a56.hot-update.js
+A	.next/static/webpack/app/layout.630b1db2615f44d8.hot-update.js
+A	.next/static/webpack/app/layout.69d6f58f90145618.hot-update.js
+A	.next/static/webpack/app/layout.710bea42242ddb77.hot-update.js
+A	.next/static/webpack/app/layout.824a9650cebb7a43.hot-update.js
+A	.next/static/webpack/app/layout.d4a8138de40650ab.hot-update.js
+A	.next/static/webpack/app/layout.f1c5ba16d1351654.hot-update.js
+A	.next/static/webpack/d4a8138de40650ab.webpack.hot-update.json
+A	.next/static/webpack/f1c5ba16d1351654.webpack.hot-update.json
+A	.next/static/webpack/webpack.00a4457c94004f92.hot-update.js
+A	.next/static/webpack/webpack.13785e191fb76797.hot-update.js
+A	.next/static/webpack/webpack.25b0d7d807919edd.hot-update.js
+A	.next/static/webpack/webpack.36036f791708a02b.hot-update.js
+A	.next/static/webpack/webpack.54945d6611b0d21e.hot-update.js
+A	.next/static/webpack/webpack.5e020d407fe97a56.hot-update.js
+A	.next/static/webpack/webpack.630b1db2615f44d8.hot-update.js
+A	.next/static/webpack/webpack.69d6f58f90145618.hot-update.js
+A	.next/static/webpack/webpack.710bea42242ddb77.hot-update.js
+A	.next/static/webpack/webpack.824a9650cebb7a43.hot-update.js
+A	.next/static/webpack/webpack.d4a8138de40650ab.hot-update.js
+A	.next/static/webpack/webpack.f1c5ba16d1351654.hot-update.js
+M	.next/trace
+M	app/checkout/page.tsx
+
+commit a335c481045205d7e36cc60125c1fab0355fe886
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 03:52:45 2026 -0300
+
+    Sprint 2: Checkout seguro com VGS e Dashboard integrado
+
+M	.next/app-build-manifest.json
+M	.next/build-manifest.json
+A	.next/cache/webpack/client-development-fallback/0.pack.gz
+A	.next/cache/webpack/client-development-fallback/index.pack.gz.old
+M	.next/cache/webpack/client-development/0.pack.gz
+M	.next/cache/webpack/client-development/1.pack.gz
+A	.next/cache/webpack/client-development/10.pack.gz
+A	.next/cache/webpack/client-development/11.pack.gz
+M	.next/cache/webpack/client-development/2.pack.gz
+M	.next/cache/webpack/client-development/4.pack.gz
+M	.next/cache/webpack/client-development/5.pack.gz
+M	.next/cache/webpack/client-development/6.pack.gz
+M	.next/cache/webpack/client-development/9.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz.old
+M	.next/cache/webpack/server-development/0.pack.gz
+M	.next/cache/webpack/server-development/1.pack.gz
+A	.next/cache/webpack/server-development/10.pack.gz
+A	.next/cache/webpack/server-development/11.pack.gz
+A	.next/cache/webpack/server-development/12.pack.gz
+M	.next/cache/webpack/server-development/2.pack.gz
+M	.next/cache/webpack/server-development/4.pack.gz
+M	.next/cache/webpack/server-development/5.pack.gz
+M	.next/cache/webpack/server-development/6.pack.gz
+M	.next/cache/webpack/server-development/8.pack.gz
+A	.next/cache/webpack/server-development/9.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz.old
+A	.next/fallback-build-manifest.json
+A	.next/server/_error.js
+M	.next/server/app-paths-manifest.json
+M	.next/server/app/_not-found/page.js
+M	.next/server/app/_not-found/page_client-reference-manifest.js
+A	.next/server/app/checkout/page.js
+A	.next/server/app/checkout/page_client-reference-manifest.js
+M	.next/server/app/page.js
+M	.next/server/app/page_client-reference-manifest.js
+M	.next/server/app/performance/page.js
+M	.next/server/app/performance/page_client-reference-manifest.js
+M	.next/server/app/transactions/page.js
+M	.next/server/app/transactions/page_client-reference-manifest.js
+M	.next/server/middleware-build-manifest.js
+M	.next/server/pages-manifest.json
+A	.next/server/pages/_app.js
+A	.next/server/pages/_document.js
+A	.next/server/pages/_error.js
+M	.next/server/vendor-chunks/@swc.js
+M	.next/server/vendor-chunks/next.js
+M	.next/server/webpack-runtime.js
+A	.next/static/chunks/_error.js
+A	.next/static/chunks/app/checkout/page.js
+M	.next/static/chunks/app/layout.js
+A	.next/static/chunks/fallback/amp.js
+A	.next/static/chunks/fallback/main.js
+A	.next/static/chunks/fallback/pages/_app.js
+A	.next/static/chunks/fallback/pages/_error.js
+A	.next/static/chunks/fallback/react-refresh.js
+A	.next/static/chunks/fallback/webpack.js
+A	.next/static/chunks/main.js
+A	.next/static/chunks/pages/_app.js
+A	.next/static/chunks/pages/_error.js
+A	.next/static/chunks/react-refresh.js
+M	.next/static/chunks/webpack.js
+M	.next/static/css/app/layout.css
+M	.next/static/development/_buildManifest.js
+A	.next/static/webpack/08b099b9bc17362a.webpack.hot-update.json
+A	.next/static/webpack/0f5f0bfaff0fa480.webpack.hot-update.json
+A	.next/static/webpack/102369c3f4a3659f.webpack.hot-update.json
+A	.next/static/webpack/11f951fc05bd1384.webpack.hot-update.json
+A	.next/static/webpack/1ed8415cfc7fb545.webpack.hot-update.json
+A	.next/static/webpack/22b2bba3f345d843.webpack.hot-update.json
+A	.next/static/webpack/22f64d0832e36fa1.webpack.hot-update.json
+A	.next/static/webpack/232eab24e7410753.webpack.hot-update.json
+A	.next/static/webpack/2f5b5c33bf74c5c2.webpack.hot-update.json
+A	.next/static/webpack/2fa6a5c7fd060b65.webpack.hot-update.json
+A	.next/static/webpack/3412ae85b02f34bf.webpack.hot-update.json
+A	.next/static/webpack/3decd6c781fb45e2.webpack.hot-update.json
+A	.next/static/webpack/457eb22d0ad0c4b8.webpack.hot-update.json
+A	.next/static/webpack/481cc74a6d88637a.webpack.hot-update.json
+A	.next/static/webpack/4cd8dbc6653a5793.webpack.hot-update.json
+A	.next/static/webpack/50cd139b5dad1aa4.webpack.hot-update.json
+A	.next/static/webpack/56b31696c12c677a.webpack.hot-update.json
+A	.next/static/webpack/57b20654267b4680.webpack.hot-update.json
+A	.next/static/webpack/5c94ffe8c4f3e293.webpack.hot-update.json
+A	.next/static/webpack/60563188a0461173.webpack.hot-update.json
+A	.next/static/webpack/6a1e92eeb7c6894b.webpack.hot-update.json
+A	.next/static/webpack/6ba0bbef3fb496b1.webpack.hot-update.json
+A	.next/static/webpack/6cd369264c0d3929.webpack.hot-update.json
+A	.next/static/webpack/7000d81b86d4b2f8.webpack.hot-update.json
+A	.next/static/webpack/8173301ae5b4e6f4.webpack.hot-update.json
+A	.next/static/webpack/8d472fcb5dee26d1.webpack.hot-update.json
+A	.next/static/webpack/8dcab238455022b5.webpack.hot-update.json
+A	.next/static/webpack/917c55cbb32242e0.webpack.hot-update.json
+A	.next/static/webpack/99be9a63b306c345.webpack.hot-update.json
+A	.next/static/webpack/9d6bf485ada97ee7.webpack.hot-update.json
+A	.next/static/webpack/9db54823a276c9bc.webpack.hot-update.json
+A	.next/static/webpack/a8cfd81deea3680e.webpack.hot-update.json
+A	.next/static/webpack/ab2ee7f9c1ee6351.webpack.hot-update.json
+A	.next/static/webpack/ac4269925fd0a80d.webpack.hot-update.json
+A	.next/static/webpack/ae751048f5f73aae.webpack.hot-update.json
+A	.next/static/webpack/app/checkout/page.0f5f0bfaff0fa480.hot-update.js
+A	.next/static/webpack/app/checkout/page.232eab24e7410753.hot-update.js
+A	.next/static/webpack/app/checkout/page.4cd8dbc6653a5793.hot-update.js
+A	.next/static/webpack/app/checkout/page.56b31696c12c677a.hot-update.js
+A	.next/static/webpack/app/checkout/page.7000d81b86d4b2f8.hot-update.js
+A	.next/static/webpack/app/checkout/page.9d6bf485ada97ee7.hot-update.js
+A	.next/static/webpack/app/checkout/page.ecba104f7ca3b685.hot-update.js
+A	.next/static/webpack/app/checkout/page.edaa561dd334de13.hot-update.js
+A	.next/static/webpack/app/layout.0f5f0bfaff0fa480.hot-update.js
+A	.next/static/webpack/app/layout.102369c3f4a3659f.hot-update.js
+A	.next/static/webpack/app/layout.11f951fc05bd1384.hot-update.js
+A	.next/static/webpack/app/layout.1ed8415cfc7fb545.hot-update.js
+A	.next/static/webpack/app/layout.22b2bba3f345d843.hot-update.js
+A	.next/static/webpack/app/layout.22f64d0832e36fa1.hot-update.js
+A	.next/static/webpack/app/layout.232eab24e7410753.hot-update.js
+A	.next/static/webpack/app/layout.2f5b5c33bf74c5c2.hot-update.js
+A	.next/static/webpack/app/layout.2fa6a5c7fd060b65.hot-update.js
+A	.next/static/webpack/app/layout.3412ae85b02f34bf.hot-update.js
+A	.next/static/webpack/app/layout.3decd6c781fb45e2.hot-update.js
+A	.next/static/webpack/app/layout.457eb22d0ad0c4b8.hot-update.js
+A	.next/static/webpack/app/layout.481cc74a6d88637a.hot-update.js
+A	.next/static/webpack/app/layout.4cd8dbc6653a5793.hot-update.js
+A	.next/static/webpack/app/layout.50cd139b5dad1aa4.hot-update.js
+A	.next/static/webpack/app/layout.57b20654267b4680.hot-update.js
+A	.next/static/webpack/app/layout.5c94ffe8c4f3e293.hot-update.js
+A	.next/static/webpack/app/layout.60563188a0461173.hot-update.js
+A	.next/static/webpack/app/layout.6ba0bbef3fb496b1.hot-update.js
+A	.next/static/webpack/app/layout.6cd369264c0d3929.hot-update.js
+A	.next/static/webpack/app/layout.7000d81b86d4b2f8.hot-update.js
+A	.next/static/webpack/app/layout.8173301ae5b4e6f4.hot-update.js
+A	.next/static/webpack/app/layout.8d472fcb5dee26d1.hot-update.js
+A	.next/static/webpack/app/layout.8dcab238455022b5.hot-update.js
+A	.next/static/webpack/app/layout.917c55cbb32242e0.hot-update.js
+A	.next/static/webpack/app/layout.99be9a63b306c345.hot-update.js
+A	.next/static/webpack/app/layout.9d6bf485ada97ee7.hot-update.js
+A	.next/static/webpack/app/layout.9db54823a276c9bc.hot-update.js
+A	.next/static/webpack/app/layout.a8cfd81deea3680e.hot-update.js
+A	.next/static/webpack/app/layout.ab2ee7f9c1ee6351.hot-update.js
+A	.next/static/webpack/app/layout.ac4269925fd0a80d.hot-update.js
+A	.next/static/webpack/app/layout.ae751048f5f73aae.hot-update.js
+A	.next/static/webpack/app/layout.b7562a30386542a0.hot-update.js
+A	.next/static/webpack/app/layout.c0978ea87b815451.hot-update.js
+A	.next/static/webpack/app/layout.c160fd73e2755afe.hot-update.js
+A	.next/static/webpack/app/layout.c284d2ee2dff720d.hot-update.js
+A	.next/static/webpack/app/layout.c426874f8eb6e3ba.hot-update.js
+A	.next/static/webpack/app/layout.d2e30a26e9696a0e.hot-update.js
+A	.next/static/webpack/app/layout.df05c3c0801191a2.hot-update.js
+A	.next/static/webpack/app/layout.dfe0fc4e81fbed33.hot-update.js
+A	.next/static/webpack/app/layout.e438b784ee5f891c.hot-update.js
+A	.next/static/webpack/app/layout.e56889c9ca072b0c.hot-update.js
+A	.next/static/webpack/app/layout.e6fba1c13232f909.hot-update.js
+A	.next/static/webpack/app/layout.e7e1621833cb8499.hot-update.js
+A	.next/static/webpack/app/layout.ecba104f7ca3b685.hot-update.js
+A	.next/static/webpack/app/layout.edaa561dd334de13.hot-update.js
+A	.next/static/webpack/app/layout.f48ef8cf62689a94.hot-update.js
+A	.next/static/webpack/app/layout.f72c0fa7fbcd8a79.hot-update.js
+A	.next/static/webpack/app/layout.ffb964ad1455435a.hot-update.js
+A	.next/static/webpack/b118d3c9856c06bd.webpack.hot-update.json
+A	.next/static/webpack/b7562a30386542a0.webpack.hot-update.json
+A	.next/static/webpack/c0978ea87b815451.webpack.hot-update.json
+A	.next/static/webpack/c160fd73e2755afe.webpack.hot-update.json
+A	.next/static/webpack/c284d2ee2dff720d.webpack.hot-update.json
+A	.next/static/webpack/c426874f8eb6e3ba.webpack.hot-update.json
+A	.next/static/webpack/d2dae956cd2e99fe.webpack.hot-update.json
+A	.next/static/webpack/d2e30a26e9696a0e.webpack.hot-update.json
+A	.next/static/webpack/ded329a0337ba8ba.webpack.hot-update.json
+A	.next/static/webpack/df05c3c0801191a2.webpack.hot-update.json
+A	.next/static/webpack/dfe0fc4e81fbed33.webpack.hot-update.json
+A	.next/static/webpack/e438b784ee5f891c.webpack.hot-update.json
+A	.next/static/webpack/e56889c9ca072b0c.webpack.hot-update.json
+A	.next/static/webpack/e6fba1c13232f909.webpack.hot-update.json
+A	.next/static/webpack/e7e1621833cb8499.webpack.hot-update.json
+A	.next/static/webpack/ecba104f7ca3b685.webpack.hot-update.json
+A	.next/static/webpack/edaa561dd334de13.webpack.hot-update.json
+A	.next/static/webpack/f48ef8cf62689a94.webpack.hot-update.json
+A	.next/static/webpack/f72c0fa7fbcd8a79.webpack.hot-update.json
+A	.next/static/webpack/ffb964ad1455435a.webpack.hot-update.json
+A	.next/static/webpack/webpack.08b099b9bc17362a.hot-update.js
+A	.next/static/webpack/webpack.0f5f0bfaff0fa480.hot-update.js
+A	.next/static/webpack/webpack.102369c3f4a3659f.hot-update.js
+A	.next/static/webpack/webpack.11f951fc05bd1384.hot-update.js
+A	.next/static/webpack/webpack.1ed8415cfc7fb545.hot-update.js
+A	.next/static/webpack/webpack.22b2bba3f345d843.hot-update.js
+A	.next/static/webpack/webpack.22f64d0832e36fa1.hot-update.js
+A	.next/static/webpack/webpack.232eab24e7410753.hot-update.js
+A	.next/static/webpack/webpack.2f5b5c33bf74c5c2.hot-update.js
+A	.next/static/webpack/webpack.2fa6a5c7fd060b65.hot-update.js
+A	.next/static/webpack/webpack.3412ae85b02f34bf.hot-update.js
+A	.next/static/webpack/webpack.3decd6c781fb45e2.hot-update.js
+A	.next/static/webpack/webpack.457eb22d0ad0c4b8.hot-update.js
+A	.next/static/webpack/webpack.481cc74a6d88637a.hot-update.js
+A	.next/static/webpack/webpack.4cd8dbc6653a5793.hot-update.js
+A	.next/static/webpack/webpack.50cd139b5dad1aa4.hot-update.js
+A	.next/static/webpack/webpack.56b31696c12c677a.hot-update.js
+A	.next/static/webpack/webpack.57b20654267b4680.hot-update.js
+A	.next/static/webpack/webpack.5c94ffe8c4f3e293.hot-update.js
+A	.next/static/webpack/webpack.60563188a0461173.hot-update.js
+A	.next/static/webpack/webpack.6a1e92eeb7c6894b.hot-update.js
+A	.next/static/webpack/webpack.6ba0bbef3fb496b1.hot-update.js
+A	.next/static/webpack/webpack.6cd369264c0d3929.hot-update.js
+A	.next/static/webpack/webpack.7000d81b86d4b2f8.hot-update.js
+A	.next/static/webpack/webpack.8173301ae5b4e6f4.hot-update.js
+A	.next/static/webpack/webpack.8d472fcb5dee26d1.hot-update.js
+A	.next/static/webpack/webpack.8dcab238455022b5.hot-update.js
+A	.next/static/webpack/webpack.917c55cbb32242e0.hot-update.js
+A	.next/static/webpack/webpack.99be9a63b306c345.hot-update.js
+A	.next/static/webpack/webpack.9d6bf485ada97ee7.hot-update.js
+A	.next/static/webpack/webpack.9db54823a276c9bc.hot-update.js
+A	.next/static/webpack/webpack.a8cfd81deea3680e.hot-update.js
+A	.next/static/webpack/webpack.ab2ee7f9c1ee6351.hot-update.js
+A	.next/static/webpack/webpack.ac4269925fd0a80d.hot-update.js
+A	.next/static/webpack/webpack.ae751048f5f73aae.hot-update.js
+A	.next/static/webpack/webpack.b118d3c9856c06bd.hot-update.js
+A	.next/static/webpack/webpack.b7562a30386542a0.hot-update.js
+A	.next/static/webpack/webpack.c0978ea87b815451.hot-update.js
+A	.next/static/webpack/webpack.c160fd73e2755afe.hot-update.js
+A	.next/static/webpack/webpack.c284d2ee2dff720d.hot-update.js
+A	.next/static/webpack/webpack.c426874f8eb6e3ba.hot-update.js
+A	.next/static/webpack/webpack.d2dae956cd2e99fe.hot-update.js
+A	.next/static/webpack/webpack.d2e30a26e9696a0e.hot-update.js
+A	.next/static/webpack/webpack.ded329a0337ba8ba.hot-update.js
+A	.next/static/webpack/webpack.df05c3c0801191a2.hot-update.js
+A	.next/static/webpack/webpack.dfe0fc4e81fbed33.hot-update.js
+A	.next/static/webpack/webpack.e438b784ee5f891c.hot-update.js
+A	.next/static/webpack/webpack.e56889c9ca072b0c.hot-update.js
+A	.next/static/webpack/webpack.e6fba1c13232f909.hot-update.js
+A	.next/static/webpack/webpack.e7e1621833cb8499.hot-update.js
+A	.next/static/webpack/webpack.ecba104f7ca3b685.hot-update.js
+A	.next/static/webpack/webpack.edaa561dd334de13.hot-update.js
+A	.next/static/webpack/webpack.f48ef8cf62689a94.hot-update.js
+A	.next/static/webpack/webpack.f72c0fa7fbcd8a79.hot-update.js
+A	.next/static/webpack/webpack.ffb964ad1455435a.hot-update.js
+M	.next/trace
+A	.next/types/app/checkout/page.ts
+A	CLAUDE.md
+M	CLAUDE_CONTEXT.md
+A	app/checkout/page.tsx
+M	app/layout.tsx
+
+commit b704eefff1200fa564cf2a8aa1bed00683580fcc
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 02:28:37 2026 -0300
+
+    feat: ambiente dev estabilizado, API funcionando
+
+M	.next/app-build-manifest.json
+M	.next/cache/webpack/client-development/0.pack.gz
+M	.next/cache/webpack/client-development/2.pack.gz
+M	.next/cache/webpack/client-development/5.pack.gz
+A	.next/cache/webpack/client-development/7.pack.gz
+A	.next/cache/webpack/client-development/8.pack.gz
+A	.next/cache/webpack/client-development/9.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz.old
+M	.next/cache/webpack/server-development/0.pack.gz
+M	.next/cache/webpack/server-development/2.pack.gz
+M	.next/cache/webpack/server-development/3.pack.gz
+M	.next/cache/webpack/server-development/4.pack.gz
+M	.next/cache/webpack/server-development/5.pack.gz
+A	.next/cache/webpack/server-development/6.pack.gz
+A	.next/cache/webpack/server-development/7.pack.gz
+A	.next/cache/webpack/server-development/8.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz.old
+M	.next/server/app-paths-manifest.json
+A	.next/server/app/api/pay/route.js
+M	.next/server/app/page.js
+M	.next/server/app/page_client-reference-manifest.js
+M	.next/server/app/performance/page.js
+M	.next/server/app/performance/page_client-reference-manifest.js
+A	.next/server/app/transactions/page.js
+A	.next/server/app/transactions/page_client-reference-manifest.js
+M	.next/server/vendor-chunks/lucide-react.js
+M	.next/server/webpack-runtime.js
+M	.next/static/chunks/app/layout.js
+A	.next/static/chunks/app/transactions/page.js
+M	.next/static/chunks/webpack.js
+M	.next/static/css/app/layout.css
+A	.next/static/webpack/03b7f176e67a6928.webpack.hot-update.json
+A	.next/static/webpack/a1632f0c67518810.webpack.hot-update.json
+A	.next/static/webpack/app/layout.03b7f176e67a6928.hot-update.js
+A	.next/static/webpack/app/layout.a1632f0c67518810.hot-update.js
+A	.next/static/webpack/app/layout.c2993461d43c20af.hot-update.js
+A	.next/static/webpack/app/layout.f0f419cdd88c5918.hot-update.js
+A	.next/static/webpack/c2993461d43c20af.webpack.hot-update.json
+A	.next/static/webpack/f0f419cdd88c5918.webpack.hot-update.json
+A	.next/static/webpack/f2075bd93049c456.webpack.hot-update.json
+A	.next/static/webpack/webpack.03b7f176e67a6928.hot-update.js
+A	.next/static/webpack/webpack.a1632f0c67518810.hot-update.js
+A	.next/static/webpack/webpack.c2993461d43c20af.hot-update.js
+A	.next/static/webpack/webpack.f0f419cdd88c5918.hot-update.js
+A	.next/static/webpack/webpack.f2075bd93049c456.hot-update.js
+M	.next/trace
+A	.next/types/app/api/pay/route.ts
+A	.next/types/app/transactions/page.ts
+A	app/transactions/page.tsx
+
+commit 8782da3fbde23e92f661df24407e44f3675308af
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 02:00:52 2026 -0300
+
+    feat: implementado sistema de rotas (transactions/performance) com layouts específicos
+
+M	.next/app-build-manifest.json
+M	.next/cache/webpack/client-development/1.pack.gz
+M	.next/cache/webpack/client-development/2.pack.gz
+A	.next/cache/webpack/client-development/3.pack.gz
+A	.next/cache/webpack/client-development/4.pack.gz
+A	.next/cache/webpack/client-development/5.pack.gz
+A	.next/cache/webpack/client-development/6.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz.old
+M	.next/cache/webpack/server-development/1.pack.gz
+M	.next/cache/webpack/server-development/2.pack.gz
+A	.next/cache/webpack/server-development/3.pack.gz
+A	.next/cache/webpack/server-development/4.pack.gz
+A	.next/cache/webpack/server-development/5.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz.old
+M	.next/server/app-paths-manifest.json
+A	.next/server/app/_not-found/page.js
+A	.next/server/app/_not-found/page_client-reference-manifest.js
+M	.next/server/app/page.js
+M	.next/server/app/page_client-reference-manifest.js
+A	.next/server/app/performance/page.js
+A	.next/server/app/performance/page_client-reference-manifest.js
+M	.next/server/vendor-chunks/lucide-react.js
+M	.next/server/vendor-chunks/next.js
+M	.next/server/webpack-runtime.js
+A	.next/static/chunks/app/_not-found/page.js
+M	.next/static/chunks/app/layout.js
+A	.next/static/chunks/app/performance/page.js
+M	.next/static/chunks/webpack.js
+M	.next/static/css/app/layout.css
+A	.next/static/webpack/301f280101b45635.webpack.hot-update.json
+A	.next/static/webpack/321469a776bf7c97.webpack.hot-update.json
+A	.next/static/webpack/335486e3147c1db1.webpack.hot-update.json
+A	.next/static/webpack/718b85a54854bce4.webpack.hot-update.json
+A	.next/static/webpack/73aae5beb44d842b.webpack.hot-update.json
+A	.next/static/webpack/746f4c945cadb9b4.webpack.hot-update.json
+A	.next/static/webpack/74b8c15835a60f2d.webpack.hot-update.json
+A	.next/static/webpack/ace0ff74f63cb221.webpack.hot-update.json
+A	.next/static/webpack/app/layout.301f280101b45635.hot-update.js
+A	.next/static/webpack/app/layout.321469a776bf7c97.hot-update.js
+A	.next/static/webpack/app/layout.335486e3147c1db1.hot-update.js
+A	.next/static/webpack/app/layout.718b85a54854bce4.hot-update.js
+A	.next/static/webpack/app/layout.73aae5beb44d842b.hot-update.js
+A	.next/static/webpack/app/layout.746f4c945cadb9b4.hot-update.js
+A	.next/static/webpack/app/layout.74b8c15835a60f2d.hot-update.js
+A	.next/static/webpack/app/layout.ace0ff74f63cb221.hot-update.js
+A	.next/static/webpack/app/layout.b238e0092ac115bc.hot-update.js
+A	.next/static/webpack/app/layout.d815ae81cb76caed.hot-update.js
+A	.next/static/webpack/b171d11c76108101.webpack.hot-update.json
+A	.next/static/webpack/b238e0092ac115bc.webpack.hot-update.json
+A	.next/static/webpack/d815ae81cb76caed.webpack.hot-update.json
+A	.next/static/webpack/fbde3ed7120365ec.webpack.hot-update.json
+A	.next/static/webpack/webpack.301f280101b45635.hot-update.js
+A	.next/static/webpack/webpack.321469a776bf7c97.hot-update.js
+A	.next/static/webpack/webpack.335486e3147c1db1.hot-update.js
+A	.next/static/webpack/webpack.718b85a54854bce4.hot-update.js
+A	.next/static/webpack/webpack.73aae5beb44d842b.hot-update.js
+A	.next/static/webpack/webpack.746f4c945cadb9b4.hot-update.js
+A	.next/static/webpack/webpack.74b8c15835a60f2d.hot-update.js
+A	.next/static/webpack/webpack.ace0ff74f63cb221.hot-update.js
+A	.next/static/webpack/webpack.b171d11c76108101.hot-update.js
+A	.next/static/webpack/webpack.b238e0092ac115bc.hot-update.js
+A	.next/static/webpack/webpack.d815ae81cb76caed.hot-update.js
+A	.next/static/webpack/webpack.fbde3ed7120365ec.hot-update.js
+M	.next/trace
+A	.next/types/app/performance/page.ts
+M	CLAUDE_CONTEXT.md
+M	app/layout.tsx
+A	app/performance/page.tsx
+A	app/transactions/page.tsx~
+
+commit db5313b984b9f3fd4e9f8d10739c3652006b7114
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 01:56:24 2026 -0300
+
+    feat: dashboard analítico finalizado (Stripe style) com gráficos Recharts
+
+M	.next/app-build-manifest.json
+D	.next/cache/webpack/client-development-fallback/0.pack.gz
+D	.next/cache/webpack/client-development-fallback/index.pack.gz
+M	.next/cache/webpack/client-development/1.pack.gz
+M	.next/cache/webpack/client-development/2.pack.gz
+D	.next/cache/webpack/client-development/3.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz.old
+M	.next/cache/webpack/server-development/0.pack.gz
+M	.next/cache/webpack/server-development/1.pack.gz
+M	.next/cache/webpack/server-development/2.pack.gz
+D	.next/cache/webpack/server-development/3.pack.gz
+D	.next/cache/webpack/server-development/4.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz.old
+M	.next/server/app-paths-manifest.json
+D	.next/server/app/_not-found/page.js
+D	.next/server/app/_not-found/page_client-reference-manifest.js
+A	.next/server/app/api/dashboard/route.js
+A	.next/server/app/page.js
+A	.next/server/app/page_client-reference-manifest.js
+M	.next/server/next-font-manifest.js
+M	.next/server/next-font-manifest.json
+M	.next/server/server-reference-manifest.js
+M	.next/server/server-reference-manifest.json
+A	.next/server/vendor-chunks/@prisma.js
+A	.next/server/vendor-chunks/@reduxjs.js
+A	.next/server/vendor-chunks/clsx.js
+A	.next/server/vendor-chunks/d3-array.js
+A	.next/server/vendor-chunks/d3-color.js
+A	.next/server/vendor-chunks/d3-format.js
+A	.next/server/vendor-chunks/d3-interpolate.js
+A	.next/server/vendor-chunks/d3-path.js
+A	.next/server/vendor-chunks/d3-scale.js
+A	.next/server/vendor-chunks/d3-shape.js
+A	.next/server/vendor-chunks/d3-time-format.js
+A	.next/server/vendor-chunks/d3-time.js
+A	.next/server/vendor-chunks/decimal.js-light.js
+A	.next/server/vendor-chunks/es-toolkit.js
+A	.next/server/vendor-chunks/eventemitter3.js
+A	.next/server/vendor-chunks/immer.js
+A	.next/server/vendor-chunks/internmap.js
+A	.next/server/vendor-chunks/lucide-react.js
+M	.next/server/vendor-chunks/next.js
+A	.next/server/vendor-chunks/postgres-array.js
+A	.next/server/vendor-chunks/react-is.js
+A	.next/server/vendor-chunks/react-redux.js
+A	.next/server/vendor-chunks/recharts.js
+A	.next/server/vendor-chunks/redux-thunk.js
+A	.next/server/vendor-chunks/redux.js
+A	.next/server/vendor-chunks/reselect.js
+A	.next/server/vendor-chunks/tiny-invariant.js
+A	.next/server/vendor-chunks/use-sync-external-store.js
+A	.next/server/vendor-chunks/victory-vendor.js
+M	.next/server/webpack-runtime.js
+D	.next/static/chunks/app/_not-found/page.js
+M	.next/static/chunks/app/layout.js
+A	.next/static/chunks/app/page.js
+M	.next/static/chunks/webpack.js
+A	.next/static/css/app/layout.css
+A	.next/static/media/19cfc7226ec3afaa-s.woff2
+A	.next/static/media/21350d82a1f187e9-s.woff2
+A	.next/static/media/8e9860b6e62d6359-s.woff2
+A	.next/static/media/ba9851c3c22cd980-s.woff2
+A	.next/static/media/c5fe6dc8356a8c31-s.woff2
+A	.next/static/media/df0a9ae256c0569c-s.woff2
+A	.next/static/media/e4af272ccee01ff0-s.p.woff2
+D	.next/static/webpack/0350ab377872fd66.webpack.hot-update.json
+A	.next/static/webpack/50114219fee95a50.webpack.hot-update.json
+A	.next/static/webpack/614d4482b813c08d.webpack.hot-update.json
+A	.next/static/webpack/8cf8cbd8910aa18b.webpack.hot-update.json
+A	.next/static/webpack/9e415a1d5249f795.webpack.hot-update.json
+A	.next/static/webpack/app/layout.50114219fee95a50.hot-update.js
+A	.next/static/webpack/app/layout.614d4482b813c08d.hot-update.js
+A	.next/static/webpack/app/layout.8cf8cbd8910aa18b.hot-update.js
+A	.next/static/webpack/app/layout.9e415a1d5249f795.hot-update.js
+A	.next/static/webpack/app/layout.ca3a7e6805ef80ec.hot-update.js
+A	.next/static/webpack/app/layout.d3b5a6ca52a8bd1c.hot-update.js
+A	.next/static/webpack/app/page.50114219fee95a50.hot-update.js
+A	.next/static/webpack/ca3a7e6805ef80ec.webpack.hot-update.json
+A	.next/static/webpack/d3b5a6ca52a8bd1c.webpack.hot-update.json
+D	.next/static/webpack/webpack.0350ab377872fd66.hot-update.js
+A	.next/static/webpack/webpack.50114219fee95a50.hot-update.js
+A	.next/static/webpack/webpack.614d4482b813c08d.hot-update.js
+A	.next/static/webpack/webpack.8cf8cbd8910aa18b.hot-update.js
+A	.next/static/webpack/webpack.9e415a1d5249f795.hot-update.js
+A	.next/static/webpack/webpack.ca3a7e6805ef80ec.hot-update.js
+A	.next/static/webpack/webpack.d3b5a6ca52a8bd1c.hot-update.js
+M	.next/trace
+A	.next/types/app/api/dashboard/route.ts
+A	.next/types/app/page.ts
+M	CLAUDE_CONTEXT.md
+M	app/api/dashboard/route.ts
+A	app/globals.css
+M	app/layout.tsx
+A	app/page.tsx
+M	package-lock.json
+M	package.json
+A	postcss.config.js
+A	tailwind.config.js
+
+commit bf163ac98c0f5e6ba64a0ed3452d2befde64b716
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 01:06:49 2026 -0300
+
+    feat: dashboard operacional integrado com métricas reais (Sprint 2 finalizada)
+
+M	.next/app-build-manifest.json
+M	.next/build-manifest.json
+A	.next/cache/webpack/client-development-fallback/0.pack.gz
+A	.next/cache/webpack/client-development-fallback/index.pack.gz
+A	.next/cache/webpack/client-development/1.pack.gz
+A	.next/cache/webpack/client-development/2.pack.gz
+A	.next/cache/webpack/client-development/3.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz.old
+M	.next/cache/webpack/server-development/0.pack.gz
+M	.next/cache/webpack/server-development/1.pack.gz
+M	.next/cache/webpack/server-development/2.pack.gz
+A	.next/cache/webpack/server-development/3.pack.gz
+A	.next/cache/webpack/server-development/4.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz.old
+M	.next/server/app-paths-manifest.json
+A	.next/server/app/_not-found/page.js
+A	.next/server/app/_not-found/page_client-reference-manifest.js
+D	.next/server/app/api/pay/route.js
+M	.next/server/middleware-build-manifest.js
+M	.next/server/server-reference-manifest.js
+M	.next/server/server-reference-manifest.json
+D	.next/server/vendor-chunks/@prisma.js
+A	.next/server/vendor-chunks/@swc.js
+M	.next/server/vendor-chunks/next.js
+D	.next/server/vendor-chunks/postgres-array.js
+M	.next/server/webpack-runtime.js
+A	.next/static/chunks/app-pages-internals.js
+A	.next/static/chunks/app/_not-found/page.js
+A	.next/static/chunks/app/layout.js
+A	.next/static/chunks/main-app.js
+A	.next/static/chunks/webpack.js
+A	.next/static/webpack/0350ab377872fd66.webpack.hot-update.json
+A	.next/static/webpack/633457081244afec._.hot-update.json
+A	.next/static/webpack/webpack.0350ab377872fd66.hot-update.js
+M	.next/trace
+D	.next/types/app/api/pay/route.ts
+A	.next/types/app/layout.ts
+A	app/api/dashboard/route.ts
+M	lib/services/paymentService.ts
+M	prisma/schema.prisma
+
+commit bb029b0fb3943e5ab4e4a3b4fa36a0fe6ea27da7
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 00:44:45 2026 -0300
+
+    feat: implementa motor de failover Cielo/Rede (Sprint 2 concluída)
+
+M	.next/cache/webpack/server-development/0.pack.gz
+M	.next/cache/webpack/server-development/1.pack.gz
+A	.next/cache/webpack/server-development/2.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz.old
+M	.next/server/app/api/pay/route.js
+M	.next/trace
+M	CLAUDE_CONTEXT.md
+A	lib/providers/baseProvider.ts
+A	lib/providers/cieloProvider.ts
+A	lib/providers/redeProvider.ts
+M	lib/services/paymentService.ts
+
+commit 684ea414449f2f2b3fdb591b61f38c645bbedeb0
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 00:40:38 2026 -0300
+
+    feat: implementa PaymentService e separa lógica de negócio da rota de API
+
+M	.next/server/app/api/pay/route.js
+M	.next/trace
+M	app/api/pay/route.ts
+A	lib/services/paymentService.ts
+
+commit a2199eefe1b05592013e60b617cdd0fddde4cadc
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 00:32:40 2026 -0300
+
+    docs: atualiza contexto pós-sucesso de conexão
+
+M	CLAUDE_CONTEXT.md
+
+commit 60f34ccaa429241cb1edce230f2d94b060544bc0
+Author: reigrotti <reigrotti@gmail.com>
+Date:   Thu May 7 00:31:18 2026 -0300
+
+    chore: ambiente estabilizado e autenticação merchant funcionando
+
+M	.env.local
+M	.next/cache/webpack/client-development/0.pack.gz
+M	.next/cache/webpack/client-development/index.pack.gz
+A	.next/cache/webpack/client-development/index.pack.gz.old
+M	.next/cache/webpack/server-development/0.pack.gz
+A	.next/cache/webpack/server-development/1.pack.gz
+M	.next/cache/webpack/server-development/index.pack.gz
+A	.next/cache/webpack/server-development/index.pack.gz.old
+M	.next/server/app/api/pay/route.js
+M	.next/server/server-reference-manifest.js
+M	.next/server/server-reference-manifest.json
+D	.next/server/vendor-chunks/@opentelemetry.js
+M	.next/server/vendor-chunks/@prisma.js
+M	.next/server/vendor-chunks/next.js
+M	.next/server/vendor-chunks/postgres-array.js
+M	.next/trace
+M	.next/types/app/api/pay/route.ts
+M	CLAUDE_CONTEXT.md
+M	app/api/pay/route.ts
+M	package-lock.json
+M	prisma.config.ts
+M	prisma/schema.prisma
+
+commit 094dec4f60742fc182cfb32abdfe9355495186a3
+Author: Reinaldo Grotti <reigrotti@gmail.com>
+Date:   Thu May 7 00:58:10 2026 +0000
+
+    feat: codigo atual do MVP do Cloud Shell
+
+A	.env.local
+A	.gitignore
+A	.next/app-build-manifest.json
+A	.next/build-manifest.json
+A	.next/cache/webpack/client-development/0.pack.gz
+A	.next/cache/webpack/client-development/index.pack.gz
+A	.next/cache/webpack/server-development/0.pack.gz
+A	.next/cache/webpack/server-development/index.pack.gz
+A	.next/package.json
+A	.next/react-loadable-manifest.json
+A	.next/server/app-paths-manifest.json
+A	.next/server/app/api/pay/route.js
+A	.next/server/interception-route-rewrite-manifest.js
+A	.next/server/middleware-build-manifest.js
+A	.next/server/middleware-manifest.json
+A	.next/server/middleware-react-loadable-manifest.js
+A	.next/server/next-font-manifest.js
+A	.next/server/next-font-manifest.json
+A	.next/server/pages-manifest.json
+A	.next/server/server-reference-manifest.js
+A	.next/server/server-reference-manifest.json
+A	.next/server/vendor-chunks/@opentelemetry.js
+A	.next/server/vendor-chunks/@prisma.js
+A	.next/server/vendor-chunks/next.js
+A	.next/server/vendor-chunks/postgres-array.js
+A	.next/server/webpack-runtime.js
+A	.next/static/chunks/polyfills.js
+A	.next/static/development/_buildManifest.js
+A	.next/static/development/_ssgManifest.js
+A	.next/trace
+A	.next/types/app/api/pay/route.ts
+A	.next/types/package.json
+A	CLAUDE_CONTEXT.md
+A	app/actions/merchant.ts
+A	app/api/pay/route.ts
+A	app/layout.tsx
+A	app/settings-v2/page.tsx
+A	cloud-sql-proxy
+A	lib/prisma.ts
+A	lib/services/cielo.ts
+A	lib/services/payment-service.ts
+A	lib/services/rede.ts
+A	next-env.d.ts
+A	next.config.mjs
+A	package-lock.json
+A	package.json
+A	prisma.config.ts
+A	prisma/MASTER_ARCH_PLAN.md
+A	prisma/generated/client/client.d.ts
+A	prisma/generated/client/client.js
+A	prisma/generated/client/default.d.ts
+A	prisma/generated/client/default.js
+A	prisma/generated/client/edge.d.ts
+A	prisma/generated/client/edge.js
+A	prisma/generated/client/index-browser.js
+A	prisma/generated/client/index.d.ts
+A	prisma/generated/client/index.js
+A	prisma/generated/client/package.json
+A	prisma/generated/client/query_compiler_fast_bg.js
+A	prisma/generated/client/query_compiler_fast_bg.wasm
+A	prisma/generated/client/query_compiler_fast_bg.wasm-base64.js
+A	prisma/generated/client/runtime/client.d.ts
+A	prisma/generated/client/runtime/client.js
+A	prisma/generated/client/runtime/index-browser.d.ts
+A	prisma/generated/client/runtime/index-browser.js
+A	prisma/generated/client/runtime/wasm-compiler-edge.js
+A	prisma/generated/client/schema.prisma
+A	prisma/generated/client/wasm-edge-light-loader.mjs
+A	prisma/generated/client/wasm-worker-loader.mjs
+A	prisma/migrations/20260420223703_init_merchants/migration.sql
+A	prisma/migrations/migration_lock.toml
+A	prisma/schema.prisma
+A	tsconfig.json

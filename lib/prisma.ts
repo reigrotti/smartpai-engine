@@ -1,21 +1,26 @@
-import { PrismaClient } from '@prisma/client'
-import { PrismaPg } from '@prisma/adapter-pg'
-import { Pool } from 'pg'
+import { PrismaClient } from '@prisma/client';
+import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from 'pg';
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, // nunca hardcode
-  max: 3,
-  idleTimeoutMillis: 10000,
-  connectionTimeoutMillis: 5000,
-  allowExitOnIdle: true,
-})
+const connectionString = process.env.DATABASE_URL;
 
-const adapter = new PrismaPg(pool)
+// Configuração do Pool SEM await
+const pool = new Pool({ connectionString });
+const adapter = new PrismaPg(pool);
 
-const globalForPrisma = global as unknown as { prisma: PrismaClient }
+interface CustomNodeJsGlobal {
+  prisma: PrismaClient | undefined;
+}
 
-export const prisma =
-  globalForPrisma.prisma ??
-  new PrismaClient({ adapter })
+declare const global: CustomNodeJsGlobal;
 
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+export const prisma = 
+  global.prisma || 
+  new PrismaClient({
+    adapter,
+    log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+  });
+
+if (process.env.NODE_ENV !== 'production') {
+  global.prisma = prisma;
+}

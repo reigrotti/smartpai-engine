@@ -1,11 +1,16 @@
 export interface ProviderResponse {
   success: boolean;
-  transactionId?: string;
+  pspReference?: string;
   error?: string;
   providerName: string;
+  isSoftDecline?: boolean; // Gatilho mandatório para o Silent Recovery (Regra de Ouro #4)
 }
 
 export interface IProvider {
   name: string;
-  execute(amount: number, cardToken: string): Promise<ProviderResponse>;
+  execute(
+    amount: number, 
+    cardToken: string, 
+    merchantKeys: { publicKey: string; secretKey: string }
+  ): Promise<ProviderResponse>;
 }

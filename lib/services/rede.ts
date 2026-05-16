@@ -22,7 +22,7 @@ export class RedeService {
       return {
         success: true,
         provider: 'Rede',
-        transactionId: response.data.tid,
+        pspReference: response.data.pspReference,
         status: response.data.status,
         rawResponse: response.data
       };

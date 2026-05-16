@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 
 datasource db {
@@ -7,24 +8,63 @@ datasource db {
 }
 
 model Merchant {
-  id           String        @id @default(cuid())
+  id           String        @id @default(uuid())
   name         String
-  publicKey    String        @unique
-  secretKey    String        @unique
+  publicKey    String        @unique @map("public_key")
+  secretKey    String        @unique @map("secret_key")
+  status       String        @default("ACTIVE")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  cardsOnFile  CardOnFile[]
   transactions Transaction[]
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
+
+  @@map("merchants")
 }
 
 model Transaction {
-  id         String   @id @default(cuid())
-  externalId String?  @unique
-  amount     Float
-  status     String
-  provider   String
-  error      String?
-  merchantId String
+  id                  String    @id @default(uuid())
+  pspReference        String    @unique @map("psp_reference")
+  merchantId          String    @map("merchant_id")
+  merchantReference   String?   @map("merchant_reference")
+  amount              Int
+  currency            String    @default("BRL")
+  installments        Int       @default(1)
+  vgsToken            String?   @map("vgs_token")
+  bin                 String?
+  brand               String?
+  issuer              String?
+  acquirer            String?
+  rawAcquirerResponse String?   @map("raw_acquirer_response")
+  status              String    @default("PENDING")
+  externalId          String?   @unique @map("external_id")
+  expiresAt           DateTime? @map("expires_at")
+  shopperData         Json?     @map("shopper_data")
+  riskData            Json?     @map("risk_data")
+  recoveredByRoutIQ   Boolean   @default(false) @map("recovered_by_routiq")
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
+  merchant            Merchant  @relation(fields: [merchantId], references: [id])
+
+  @@map("transactions")
+}
+
+model CardOnFile {
+  id         String   @id @default(uuid())
+  merchantId String   @map("merchant_id")
+  customerId String?  @map("customer_id")
+  vgsToken   String   @unique @map("vgs_token")
+  bin        String?
+  brand      String?
+  lastFour   String?  @map("last_four")
+  isActive   Boolean  @default(true) @map("is_active")
+  createdAt  DateTime @default(now()) @map("created_at")
   merchant   Merchant @relation(fields: [merchantId], references: [id])
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+
+  @@map("cards_on_file")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model demo {
+  cmd_output String?
+
+  @@ignore
 }

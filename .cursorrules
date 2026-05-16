@@ -1,0 +1,39 @@
+{
+  "project": {
+    "name": "RoutIQ",
+    "type": "Financial Orchestrator & Smart Routing",
+    "version": "1.2.0",
+    "stack": {
+      "framework": "Next.js 14 (App Router)",
+      "language": "TypeScript (Strict Mode)",
+      "orm": "Prisma 7.8.0 with Driver Adapters",
+      "database": "PostgreSQL (Google Cloud SQL via Proxy)",
+      "runtime": "Node.js v22"
+    }
+  },
+  "core_principles": {
+    "zero_pci_scope": "Never store raw credit card numbers, CVVs, or sensitive pin data in the database. Use tokens and temporary abstractions provided by providers.",
+    "multi_tenancy_ssot": "Every query, aggregation, or state change MUST enforce multi-tenancy validation using the 'merchantId' or 'secretKey'. Isolation is non-negotiable.",
+    "performance_budget": "Target internal routing latency is sub-2ms. Code architectures must favor direct evaluation and lightweight JSON mapping over complex nested loops."
+  },
+  "code_style_and_standards": {
+    "typescript": {
+      "strict": true,
+      "noImplicitAny": true,
+      "target": "ES2022",
+      "moduleResolution": "Bundler",
+      "imports": "Never use implicit extension hacks like '.ts' or '.tsx' inside application modules (app/ or lib/). Allow the Next.js bundler to handle resolution. Exception: Isolated CLI script executions under ESM loader rules require explicit paths."
+    },
+    "prisma_guidelines": {
+      "driver_adapters": "Always utilize the instantiated 'prisma' client from '@/lib/prisma' which aggregates the '@prisma/adapter-pg' and 'pg.Pool'. Never spawn naked 'new PrismaClient()' instances.",
+      "mutations": "Data fields mapped as String storing stringified data objects must be explicitly stringified using 'JSON.stringify()' before mutation to comply with strict schema typing."
+    },
+    "routing_rules": {
+      "silent_recovery": "Transactions ending in exact '.99' decimals simulate Soft Decline in Cielo and MUST trigger the failover routing engine to Rede.",
+      "hard_decline_guard": "If a provider returns 'isSoftDecline: false', the routing queue loop MUST be broken immediately to protect processing costs and mitigate card-washing attacks."
+    }
+  },
+  "validation_protocol": {
+    "mandatory_step": "Before declaring any task completed, the agent must ensure a static analysis check passes cleanly by invoking 'npx tsc --noEmit'. Zero errors allowed."
+  }
+}

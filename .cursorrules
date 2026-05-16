@@ -1,39 +1,35 @@
 {
   "project": {
     "name": "RoutIQ",
-    "type": "Financial Orchestrator & Smart Routing",
-    "version": "1.2.0",
-    "stack": {
-      "framework": "Next.js 14 (App Router)",
-      "language": "TypeScript (Strict Mode)",
-      "orm": "Prisma 7.8.0 with Driver Adapters",
-      "database": "PostgreSQL (Google Cloud SQL via Proxy)",
-      "runtime": "Node.js v22"
-    }
+    "type": "Financial Orchestrator & Smart Routing Engine",
+    "version": "2.1.0",
+    "status": "Production-Ready / Pitch-Validated / Telemetry-Proven"
   },
-  "core_principles": {
-    "zero_pci_scope": "Never store raw credit card numbers, CVVs, or sensitive pin data in the database. Use tokens and temporary abstractions provided by providers.",
-    "multi_tenancy_ssot": "Every query, aggregation, or state change MUST enforce multi-tenancy validation using the 'merchantId' or 'secretKey'. Isolation is non-negotiable.",
-    "performance_budget": "Target internal routing latency is sub-2ms. Code architectures must favor direct evaluation and lightweight JSON mapping over complex nested loops."
+  "database_and_models": {
+    "orm": "Prisma 7.8.0",
+    "provider_adapter": "Mandatory use of '@prisma/adapter-pg' paired with 'pg.Pool' through '@/lib/prisma'. Isolated naked instances are strictly prohibited.",
+    "id_integrity": "Never invent generic transaction identifiers like 'transaction_id'. Always target and validate the strict 'pspReference' index or 'externalId' for PIX conciliation.",
+    "mutations": "Data fields like 'rawAcquirerResponse', 'shopperData', and 'riskData' are native PostgreSQL 'jsonb' columns. Explicit 'JSON.stringify()' hooks are strictly prohibited; object literals must be passed directly into Prisma mutations to preserve index integrity and native JSON querying capability.",
+    "raw_queries": "All explicit raw database executions via 'prisma.$queryRaw' interacting with date aggregates must target physical snake_case columns (e.g., 'created_at') and explicitly apply integer casting (e.g., '::int') on aggregations like 'SUM()' to prevent Node.js BigInt serialization crashes (HTTP 500)."
   },
-  "code_style_and_standards": {
-    "typescript": {
-      "strict": true,
-      "noImplicitAny": true,
-      "target": "ES2022",
-      "moduleResolution": "Bundler",
-      "imports": "Never use implicit extension hacks like '.ts' or '.tsx' inside application modules (app/ or lib/). Allow the Next.js bundler to handle resolution. Exception: Isolated CLI script executions under ESM loader rules require explicit paths."
-    },
-    "prisma_guidelines": {
-      "driver_adapters": "Always utilize the instantiated 'prisma' client from '@/lib/prisma' which aggregates the '@prisma/adapter-pg' and 'pg.Pool'. Never spawn naked 'new PrismaClient()' instances.",
-      "mutations": "Data fields mapped as String storing stringified data objects must be explicitly stringified using 'JSON.stringify()' before mutation to comply with strict schema typing."
-    },
-    "routing_rules": {
-      "silent_recovery": "Transactions ending in exact '.99' decimals simulate Soft Decline in Cielo and MUST trigger the failover routing engine to Rede.",
-      "hard_decline_guard": "If a provider returns 'isSoftDecline: false', the routing queue loop MUST be broken immediately to protect processing costs and mitigate card-washing attacks."
-    }
+  "backend_and_routing_engine": {
+    "multi_tenancy_isolation": "Every single execution, query, or state transition MUST validate scope against 'merchantId' or verified 'secretKey'. Cross-tenant data leak is a zero-tolerance critical failure.",
+    "antifraud_and_bin": "Routing choices must query card BIN metrics first. If a soft decline occurs on exact '.99' decimals, trigger immediate failover cascade (Cielo -> Rede).",
+    "hard_decline_guard": "If 'isSoftDecline' is evaluated as false, the execution queue must break immediately. No further attempts allowed to safeguard gateway operating costs."
+  },
+  "frontend_and_dashboard": {
+    "architecture": "Next.js 14 App Router components.",
+    "state_management": "Redux Toolkit paired with Recharts for dynamic visual financial telemetry.",
+    "data_fetching": "Server Actions and secure backend API endpoints. The frontend core contract maps database results strictly through the unified 'recentTransactions' array token to mirror real-time table state. Frontend must never call external payment processors or expose acquirer tokens/secret keys to the client window."
+  },
+  "compliance_and_security": {
+    "pci_scope": "Zero PCI Scope enforcement. Raw credit card data, PANs, or CVVs must never touch or reside within local or Cloud SQL logs. Leverage tokenization architecture placeholders at all times."
+  },
+  "telemetry_and_performance_benchmarks": {
+    "target_infrastructure": "Google Cloud SQL (PostgreSQL Core Module)",
+    "validated_throughput": "Sustained high-concurrency write metrics at 465.77 operations per second under an intensive concurrent batch load (1,000 transactions / 2.147 seconds total runtime). Any architectural regression that degrades this write threshold below 400 ops/sec violates production SLA limits."
   },
   "validation_protocol": {
-    "mandatory_step": "Before declaring any task completed, the agent must ensure a static analysis check passes cleanly by invoking 'npx tsc --noEmit'. Zero errors allowed."
+    "gate": "Execution of 'npx tsc --noEmit' must yield zero type errors before any deployment or git commit sequence."
   }
 }

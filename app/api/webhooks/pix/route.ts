@@ -32,17 +32,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: 'Already processed' }, { status: 200 });
     }
 
-    // 4. Atualização de Status Dinâmica e Resiliente (Tratamento para o Prisma 7)
+    // 4. Atualização de Status Dinâmica e Resiliente (Tratamento para o Prisma 7 com JSONB nativo)
+    const prevRaw = (existingTransaction.rawAcquirerResponse && typeof existingTransaction.rawAcquirerResponse === 'object')
+      ? (existingTransaction.rawAcquirerResponse as Record<string, any>)
+      : {};
+
     await prisma.transaction.update({
       where: { id: existingTransaction.id },
       data: { 
         status: status === 'PAID' ? 'SUCCESS' : 'FAILED',
-        // Injeta metadados de auditoria preservando o log de alteração
-        rawAcquirerResponse: JSON.stringify({
-          ...JSON.parse(existingTransaction.rawAcquirerResponse || '{}'),
+        // Injeta metadados de auditoria preservando o log de alteração como objeto JSONB nativo
+        rawAcquirerResponse: {
+          ...prevRaw,
           webhookNotification: body,
           processedAt: new Date().toISOString()
-        })
+        }
       }
     });
 

@@ -33,7 +33,7 @@ model Transaction {
   brand               String?
   issuer              String?
   acquirer            String?
-  rawAcquirerResponse String?   @map("raw_acquirer_response")
+  rawAcquirerResponse Json?     @map("raw_acquirer_response")
   status              String    @default("PENDING")
   externalId          String?   @unique @map("external_id")
   expiresAt           DateTime? @map("expires_at")

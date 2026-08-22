@@ -2,12 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #09090b;
-  --foreground: #fafafa;
+@layer base {
+  :root {
+    --background: #f8f9fa;
+    --foreground: #0a0612;
+    --card: #ffffff;
+    --card-foreground: #0a0612;
+    --popover: #ffffff;
+    --popover-foreground: #0a0612;
+    --primary: #008529;
+    --primary-foreground: #ffffff;
+    --secondary: #36103a;
+    --secondary-foreground: #ffffff;
+    --muted: #eef0f2;
+    --muted-foreground: #6b6770;
+    --accent: #008529;
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #e4e7ea;
+    --input: #e4e7ea;
+    --ring: #008529;
+    --chart-1: #008529;
+    --chart-2: #36103a;
+    --chart-3: #a47d5e;
+    --chart-4: #6366f1;
+    --chart-5: #ec4899;
+    --radius: 0.625rem;
+    --sidebar: #ffffff;
+    --sidebar-foreground: #0a0612;
+    --sidebar-primary: #008529;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #f0f2f4;
+    --sidebar-accent-foreground: #0a0612;
+    --sidebar-border: #e4e7ea;
+    --sidebar-ring: #008529;
+    --success: #008529;
+    --success-foreground: #ffffff;
+    --warning: #f59e0b;
+    --warning-foreground: #1c1917;
+    --insight: #36103a;
+    --insight-foreground: #ffffff;
+    --plinia-green: #008529;
+    --plinia-purple: #36103a;
+  }
+
+  .dark {
+    --background: #09090b;
+    --foreground: #fafafa;
+    --card: #121215;
+    --card-foreground: #fafafa;
+    --popover: #121215;
+    --popover-foreground: #fafafa;
+    --primary: #008529;
+    --primary-foreground: #ffffff;
+    --secondary: #36103a;
+    --secondary-foreground: #fafafa;
+    --muted: #1e1e24;
+    --muted-foreground: #a1a1aa;
+    --accent: #008529;
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: #27272a;
+    --input: #27272a;
+    --ring: #008529;
+    --chart-1: #008529;
+    --chart-2: #8b5cf6;
+    --chart-3: #f59e0b;
+    --chart-4: #6366f1;
+    --chart-5: #ec4899;
+    --sidebar: #0e0e11;
+    --sidebar-foreground: #fafafa;
+    --sidebar-primary: #008529;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #1e1e24;
+    --sidebar-accent-foreground: #fafafa;
+    --sidebar-border: #27272a;
+    --sidebar-ring: #008529;
+    --success: #10b981;
+    --success-foreground: #ffffff;
+    --warning: #f59e0b;
+    --warning-foreground: #1c1917;
+    --insight: #36103a;
+    --insight-foreground: #ffffff;
+    --plinia-green: #006B3F;
+    --plinia-purple: #420039;
+  }
 }
 
-body {
-  background-color: #09090b;
-  color: #fafafa;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
